@@ -1,9 +1,21 @@
+"use client";
+
+import { Button } from "@headlessui/react";
+
 export default function Home() {
+  const handleClick = () => {
+    window.location.href = "/api/login";
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        EVE ONLINE CHARACTER SHEET
-      </main>
+    <div className="flex items-center justify-center w-full min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <div className="flex flex-col gap-4 items-center">
+        <h1>EVE ONLINE CHARACTER SHEET</h1>
+        <Button
+          className="w-[270px] h-[45px] bg-[url(./media/eve-sso-login-black-large.png)]"
+          onClick={handleClick}
+        ></Button>
+      </div>
     </div>
   );
 }
