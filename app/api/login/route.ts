@@ -1,18 +1,16 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { redirect } from "next/navigation";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const GET = async () => {
   const clientId = process.env.EVE_PUBLIC_CLIENT_ID;
   const redirectUri = process.env.EVE_REDIRECT_URI;
   const scope = process.env.EVE_ESI_SCOPES;
-
+  console.log("clientId", clientId);
   const authUrl = `${
     process.env.EVE_AUTH_URL
   }?response_type=code&redirect_uri=${encodeURIComponent(
     redirectUri!
-  )}&client_id=${clientId}&scope=${scope}`;
+  )}&client_id=${clientId}&scope=${scope}&state=random_state`;
+  console.log("authUrl", authUrl);
 
-  res.redirect(authUrl);
-}
+  redirect(authUrl);
+};
