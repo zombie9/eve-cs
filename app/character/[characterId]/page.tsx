@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface CharacterDetailsProps {
   params: {
     characterId: string;
@@ -9,10 +11,12 @@ export default function CharacterDetails({ params }: CharacterDetailsProps) {
 
   return (
     <div>
-      <h1>Character Details</h1>
-      <br />
-      <p>Character ID: {characterId}</p>
-      {/* Add more character details here */}
+      <Image
+        src={`https://images.evetech.net/characters/${characterId}/portrait?size=256`}
+        alt="Character portrait"
+        width={256}
+        height={256}
+      />
     </div>
   );
 }
