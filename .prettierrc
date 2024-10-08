@@ -8,5 +8,5 @@
   "trailingComma": "none",
   "useTabs": false,
   "semi": true,
-  "endOfLine":"auto"
+  "endOfLine": "auto"
 }

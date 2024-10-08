@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
-
 interface CharacterData {
   CharacterID: number;
   CharacterName: string;
@@ -22,20 +20,27 @@ export async function GET(req: NextRequest) {
 
   try {
     const verifyUrl = process.env.EVE_VERIFY_URL;
-    const response = await axios.get<CharacterData>(`${verifyUrl}`, {
+    const response = await fetch(`${verifyUrl}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
     });
-    console.log('Character data:', response.data);
 
-    return NextResponse.json(response.data);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    console.error('Error fetching character data:', error.response?.data || error.message);
-    return NextResponse.json(
-      { error: error.response?.data || 'Internal Server Error' },
-      { status: error.response?.status || 500 }
-    );
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error fetching character data:', errorData);
+      return NextResponse.json(
+        { error: errorData || 'Internal Server Error' },
+        { status: response.status }
+      );
+    }
+
+    const data: CharacterData = await response.json();
+    console.log('Character data:', data);
+
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error('Error fetching character data:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

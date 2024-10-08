@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
-import axios from 'axios';
 
 export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log('req', req);
@@ -14,21 +13,27 @@ export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const tokenResponse = await axios.post(
-      process.env.EVE_TOKEN_URL!,
-      new URLSearchParams({
+    const tokenResponse = await fetch(process.env.EVE_TOKEN_URL!, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
         grant_type: 'authorization_code',
         code,
         client_id: process.env.EVE_PUBLIC_CLIENT_ID!,
         client_secret: process.env.EVE_CLIENT_SECRET_KEY!,
         redirect_uri: process.env.EVE_REDIRECT_URI!
-      }).toString(),
-      {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      }
-    );
+      }).toString()
+    });
 
-    const { access_token: accessToken, refresh_token: refreshToken } = tokenResponse.data;
+    if (!tokenResponse.ok) {
+      const errorData = await tokenResponse.json();
+      console.error('Error exchanging authorization code for token:', errorData);
+      return res.status(tokenResponse.status).json({ error: errorData });
+    }
+
+    const { access_token: accessToken, refresh_token: refreshToken } = await tokenResponse.json();
     const response = NextResponse.redirect(new URL(`${process.env.PUBLIC_SITE_URL}/character`));
 
     response.cookies.set('accessToken', accessToken, {
