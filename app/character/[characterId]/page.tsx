@@ -1,10 +1,23 @@
 import Image from 'next/image';
 import { cookies } from 'next/headers';
 
+import { bloodlines, races } from '../../../data';
+
 interface CharacterDetailsProps {
   params: {
     characterId: string;
   };
+}
+
+interface CharacterData {
+  name: string;
+  birthday: string;
+  race_id: number;
+  bloodline_id: number;
+  description: string;
+  security_status: number;
+  gender: string;
+  corporation_id: number;
 }
 
 export default async function CharacterDetails({ params }: CharacterDetailsProps) {
@@ -30,17 +43,28 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
   }
 
   const character: CharacterData = await res.json();
+  const race = races[character.race_id].nameID.en;
+  const bloodline = bloodlines[character.bloodline_id].nameID.en;
+  console.log(race);
 
   console.log('character', character);
 
   return (
-    <div>
+    <div className="flex">
       <Image
         src={`https://images.evetech.net/characters/${characterId}/portrait?size=256`}
         alt="Character portrait"
         width={256}
         height={256}
       />
+      <div>
+        <p>Name: {character.name}</p>
+        <p>Birthday: {character.birthday}</p>
+        <p>Description: {character.description}</p>
+        <p>Gender: {character.gender}</p>
+        <p>Race: {race}</p>
+        <p>Bloodline: {bloodline}</p>
+      </div>
     </div>
   );
 }
