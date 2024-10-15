@@ -1,16 +1,10 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
+import { Roboto_Condensed } from '@next/font/google';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900'
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900'
+const robotoCondensed = Roboto_Condensed({
+  weight: ['400', '700'],
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
@@ -25,7 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`${robotoCondensed.className}
+        relative antialiased h-screen bg-cover bg-center bg-no-repeat p-6
+        bg-[url('./media/bg-black-rise-nebula.jpg')]`}
+      >
+        <div className="max-w-7xl mx-auto px-4">{children}</div>
+      </body>
     </html>
   );
 }
