@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Roboto_Condensed } from '@next/font/google';
+import { Roboto_Condensed } from 'next/font/google';
 
 const robotoCondensed = Roboto_Condensed({
   weight: ['400', '700'],
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${robotoCondensed.className}
         relative antialiased h-screen bg-cover bg-center bg-no-repeat p-6
-        bg-[url('./media/bg-black-rise-nebula.jpg')]`}
+        bg-[url('../media/bg-black-rise-nebula.jpg')]`}
       >
         <div className="max-w-7xl mx-auto px-4">{children}</div>
       </body>

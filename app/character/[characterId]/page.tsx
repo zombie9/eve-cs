@@ -35,7 +35,7 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
     // headers: {
     //   Authorization: `Bearer ${accessToken}`
     // },
-    cache: 'no-store'
+    cache: 'no-cache'
   });
 
   if (!res.ok) {
@@ -54,7 +54,7 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
 
   return (
     <>
-      <div className="flex gap-x-4 bg-black bg-opacity-70 p-4">
+      <div className="flex gap-x-4 bg-black bg-opacity-50 p-4">
         <Image
           src={`https://images.evetech.net/characters/${characterId}/portrait?size=256`}
           alt="Character portrait"
@@ -81,7 +81,11 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
           <p>{character.security_status.toFixed(2)}</p>
         </div>
       </div>
-      <div className="flex gap-4 bg-black bg-opacity-60 p-4 mt-4">{character.description}</div>
+      <div className="flex gap-4 bg-black bg-opacity-50 p-4 mt-4">
+        {character.description
+          ? "Zinja, one of twenty-three vat-grown experiments, was genetically engineered to survive the rigors of capsuleer augmentation. Zinja's indomitable will, a result of this engineered perfection, empowers them to defy mortality, thriving amidst the cold void of New Eden where others would falter."
+          : ''}
+      </div>
     </>
   );
 }

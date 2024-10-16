@@ -12,7 +12,7 @@ export default function Home() {
       <div className="flex flex-col gap-4 items-center">
         <h1>EVE ONLINE CHARACTER VIEWER</h1>
         <Button
-          className="w-[270px] h-[45px] bg-[url(./media/eve-sso-login-black-large.png)] data-[hover]:brightness-125"
+          className="w-[270px] h-[45px] bg-[url(../media/eve-sso-login-black-large.png)] data-[hover]:brightness-125"
           onClick={handleClick}
         ></Button>
       </div>
