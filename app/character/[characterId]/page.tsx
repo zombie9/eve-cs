@@ -1,12 +1,12 @@
 import PersonalDetails from '@/components/PersonalDetails';
 
-interface CharacterDetailsProps {
+interface CharacterProps {
   params: {
     characterId: string;
   };
 }
 
-export default async function CharacterDetails({ params }: CharacterDetailsProps) {
+export default async function Character({ params }: CharacterProps) {
   const { characterId } = params;
 
   return (

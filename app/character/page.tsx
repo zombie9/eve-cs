@@ -1,20 +1,12 @@
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 
-interface CharacterData {
-  CharacterID: number;
-  CharacterName: string;
-  ExpiresOn: string;
-  Scopes: string;
-  TokenType: string;
-  CharacterOwnerHash: string;
-  IntellectualProperty: string;
-}
+import { VerificationData } from '@/types';
 
-export default async function Character() {
+export default async function VerifyCharacter() {
   const accessToken = await cookies().get('accessToken')?.value;
 
-  const res = await fetch(`${process.env.PUBLIC_SITE_URL}/api/character`, {
+  const res = await fetch(`${process.env.PUBLIC_SITE_URL}/api/verify`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -24,7 +16,7 @@ export default async function Character() {
   });
 
   if (res.ok) {
-    const character: CharacterData = await res.json();
+    const character: VerificationData = await res.json();
 
     redirect(`/character/${character.CharacterID}`);
   } else {
