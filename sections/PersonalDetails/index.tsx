@@ -63,18 +63,8 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
         <Corporation corporationId={character.corporation_id} />
       </div>
       <div className="flex gap-x-4 content-box mt-4">
-        {character.description && (
-          // hardcoding longer character description until ESI updates
-          <>
-            <p>Biography:</p>
-            <p>
-              Zinja, one of twenty-three vat-grown experiments, was genetically engineered to
-              survive the rigors of capsuleer augmentation. Zinja&lsquo;s indomitable will, a result
-              of this engineered perfection, empowers them to defy mortality, thriving amidst the
-              cold void of New Eden where others would falter.
-            </p>
-          </>
-        )}
+        <p>Biography:</p>
+        <p>{character.description}</p>
       </div>
     </>
   );

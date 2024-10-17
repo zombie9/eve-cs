@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.evetech.net',
         port: '',
-        pathname: '/characters/**'
+        pathname: '/**'
       }
     ]
   }
