@@ -21,6 +21,6 @@ export default async function VerifyCharacter() {
     redirect(`/character/${character.CharacterID}`);
   } else {
     console.error('Failed to fetch character data');
-    return <div>Failed to load character data. Please try again later.</div>;
+    return <div>Failed to verify character data. Please try again later.</div>;
   }
 }

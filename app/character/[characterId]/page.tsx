@@ -1,12 +1,12 @@
-import PersonalDetails from '@/components/PersonalDetails';
+import PersonalDetails from '@/sections/PersonalDetails';
 
-interface CharacterProps {
+interface CharacterDetailsProps {
   params: {
     characterId: string;
   };
 }
 
-export default async function Character({ params }: CharacterProps) {
+export default async function CharacterDetails({ params }: CharacterDetailsProps) {
   const { characterId } = params;
 
   return (
