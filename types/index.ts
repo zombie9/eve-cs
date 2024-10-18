@@ -18,3 +18,20 @@ export interface CharacterData {
   gender: string;
   corporation_id: number;
 }
+
+export interface CorporationData {
+  name: string;
+  ticker: string;
+  member_count: number;
+  ceo_id: number;
+  alliance_id: number;
+  faction_id: number;
+  creator_id: number;
+  date_founded: string;
+  home_station_id: number;
+  shares: number;
+  url: string;
+  war_eligible: boolean;
+  description: string;
+  tax_rate: number;
+}

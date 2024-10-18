@@ -1,3 +1,4 @@
 export const esiSlugs = {
-  character: '/characters/'
+  character: '/characters/',
+  corporations: '/corporations/'
 };

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { fetchEveData } from '@/utils';
+import { fetchEveData, formatDate } from '@/utils';
 import { bloodlines, races } from '@/data';
 import { esiSlugs } from '@/constants';
 import { CharacterData } from '@/types';
@@ -18,15 +18,6 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
 
   const race = races[character.race_id].nameID.en;
   const bloodline = bloodlines[character.bloodline_id].nameID.en;
-  const birthDate = new Date(character.birthday);
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric'
-  };
-  const formattedDate = birthDate.toLocaleDateString('en-US', options);
 
   console.log('character', character);
 
@@ -45,7 +36,7 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
             <p>{character.name}</p>
 
             <p>Birthday:</p>
-            <p>{formattedDate}</p>
+            <p>{formatDate(character.birthday)}</p>
 
             <p>Gender:</p>
             <p>{character.gender.charAt(0).toUpperCase() + character.gender.slice(1)}</p>
