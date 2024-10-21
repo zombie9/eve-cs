@@ -35,3 +35,15 @@ export interface CorporationData {
   description: string;
   tax_rate: number;
 }
+
+export interface Skill {
+  skill_id: number;
+  active_skill_level: number;
+  skillpoints_in_skill: number;
+  trained_skill_level: number;
+}
+export interface SkillsData {
+  skills: Skill[];
+  total_sp: number;
+  unallocated_sp: number;
+}

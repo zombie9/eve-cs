@@ -27,7 +27,7 @@ export async function Corporation({ corporationId }: { corporationId: number }) 
     <div className="flex gap-x-4 content-box flex-1">
       <Image
         src={`https://images.evetech.net/corporations/${corporationId}/logo?size=128`}
-        alt="Character portrait"
+        alt="Corporation Logo"
         width={160}
         height={160}
       />

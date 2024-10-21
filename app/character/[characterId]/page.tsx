@@ -1,4 +1,5 @@
 import PersonalDetails from '@/sections/PersonalDetails';
+import CurrentSkills from '@/sections/Skills';
 
 interface CharacterDetailsProps {
   params: {
@@ -12,6 +13,7 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
   return (
     <>
       <PersonalDetails characterId={characterId} />
+      <CurrentSkills characterId={characterId} />
     </>
   );
 }

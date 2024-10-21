@@ -1,4 +1,5 @@
 export const esiSlugs = {
   character: '/characters/',
-  corporations: '/corporations/'
+  corporations: '/corporations/',
+  skills: '/skills/'
 };

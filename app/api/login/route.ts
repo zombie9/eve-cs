@@ -4,7 +4,7 @@ export const GET = async () => {
   const clientId = process.env.EVE_PUBLIC_CLIENT_ID;
   const redirectUri = process.env.EVE_REDIRECT_URI;
   const scope = process.env.EVE_ESI_SCOPES;
-  console.log("clientId", clientId);
+
   const authUrl = `${
     process.env.EVE_AUTH_URL
   }?response_type=code&redirect_uri=${encodeURIComponent(
