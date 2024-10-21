@@ -23,13 +23,14 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
 
   return (
     <>
-      <div className="flex flex-row w-full justify-between gap-x-4 mt-4">
-        <div className="flex gap-x-4 content-box flex-1">
+      <div className="flex flex-col lg:flex-row w-full justify-between gap-x-4 mt-4">
+        <div className="flex flex-col lg:flex-row gap-x-4 content-box flex-1">
           <Image
             src={`https://images.evetech.net/characters/${characterId}/portrait?size=256`}
             alt="Character portrait"
             width={160}
             height={160}
+            className="self-center lg:self-start mb-4 lg:mb-0"
           />
           <div className="grid grid-cols-[auto,1fr] gap-x-10">
             <p>Name:</p>
@@ -53,7 +54,7 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
         </div>
         <Corporation corporationId={character.corporation_id} />
       </div>
-      <div className="flex gap-x-4 content-box mt-4">
+      <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 content-box mt-4">
         <p>Biography:</p>
         <p>{character.description}</p>
       </div>

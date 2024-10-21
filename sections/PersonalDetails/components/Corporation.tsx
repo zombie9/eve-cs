@@ -24,12 +24,13 @@ export async function Corporation({ corporationId }: { corporationId: number }) 
   const ceoName = ceo.name;
 
   return (
-    <div className="flex gap-x-4 content-box flex-1">
+    <div className="flex flex-col lg:flex-row gap-x-4 content-box flex-1">
       <Image
         src={`https://images.evetech.net/corporations/${corporationId}/logo?size=128`}
         alt="Corporation Logo"
         width={160}
         height={160}
+        className="self-center lg:self-start"
       />
       <div className="grid grid-cols-[auto,1fr] gap-x-10">
         <p>Corporation:</p>
