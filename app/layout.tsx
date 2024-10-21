@@ -21,8 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${robotoCondensed.className}
-        relative antialiased h-screen bg-cover bg-center bg-no-repeat p-6
-        bg-[url('../media/bg-black-rise-nebula.jpg')]`}
+        relative antialiased bg-center bg-repeat
+        bg-[url('../media/bg-tiled-2.png')]`}
       >
         <div className="max-w-7xl mx-auto px-4">{children}</div>
       </body>

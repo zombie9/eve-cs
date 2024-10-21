@@ -23,7 +23,7 @@ export default async function PersonalDetails({ characterId }: PersonalDetailsPr
 
   return (
     <>
-      <div className="flex flex-row w-full justify-between gap-x-4">
+      <div className="flex flex-row w-full justify-between gap-x-4 mt-4">
         <div className="flex gap-x-4 content-box flex-1">
           <Image
             src={`https://images.evetech.net/characters/${characterId}/portrait?size=256`}
