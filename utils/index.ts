@@ -51,3 +51,27 @@ export const formatDate = (dateString: string): string => {
   };
   return date.toLocaleDateString('en-US', options);
 };
+
+export function sortByName<T extends { skillName: string | number }>(items: T[]): T[] {
+  return items.sort((a, b) => {
+    if (a.skillName < b.skillName) {
+      return -1;
+    }
+    if (a.skillName > b.skillName) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+export function sortByGroupName<T extends { skillGroup: string }>(items: T[]): T[] {
+  return items.sort((a, b) => {
+    if (a.skillGroup < b.skillGroup) {
+      return -1;
+    }
+    if (a.skillGroup > b.skillGroup) {
+      return 1;
+    }
+    return 0;
+  });
+}
