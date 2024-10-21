@@ -23,6 +23,9 @@ export async function Corporation({ corporationId }: { corporationId: number }) 
   });
   const ceoName = ceo.name;
 
+  const abridgedDescription =
+    description.length > 40 ? `${description.slice(0, 40)}...` : description;
+
   return (
     <div className="flex flex-col lg:flex-row gap-x-4 content-box flex-1">
       <Image
@@ -51,7 +54,7 @@ export async function Corporation({ corporationId }: { corporationId: number }) 
         <p>{ceoName}</p>
 
         <p>Description:</p>
-        <p>{description}</p>
+        <p>{abridgedDescription}</p>
       </div>
     </div>
   );

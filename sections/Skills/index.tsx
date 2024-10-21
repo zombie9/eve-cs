@@ -61,9 +61,9 @@ export default async function CurrentSkills({ characterId }: CurrentSkillsProps)
     <>
       {sortedGroups.map((group) => {
         return (
-          <div key={group.skillGroup} className="content-box my-4">
-            <h2 className="font-bold">{group.skillGroup}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-16 p-4">
+          <div key={group.skillGroup} className="content-box mb-2">
+            <h2 className="font-bold mb-4">{group.skillGroup}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-16">
               {group.skills.map((skill) => {
                 return (
                   <div key={skill.skill_id} className="flex w-full items-center justify-between">
@@ -87,7 +87,6 @@ export default async function CurrentSkills({ characterId }: CurrentSkillsProps)
           </div>
         );
       })}
-      ;
     </>
   );
 }
